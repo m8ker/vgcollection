@@ -1,0 +1,380 @@
+2014-09-22 09:25:31,658 [28] Orchard.Tasks.BackgroundService - (null) - Error while processing background task
+ (null)
+System.Data.SqlClient.SqlException (0x80131904): Connection Timeout Expired.  The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement.  This could be because the pre-login handshake failed or the server was unable to respond back in time.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=15145; handshake=0;  ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake(Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean& marsCapable)
+   at System.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__7() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__6() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.Open(RetryPolicy retryPolicy) in :line 0
+   at NHibernate.SqlAzure.ReliableSqlDbConnection.Open() in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableSqlDbConnection.cs:line 91
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.SqlAzure.ReliableAdoTransaction..ctor(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoTransaction.cs:line 20
+   at NHibernate.SqlAzure.ReliableAdoNetWithDistributedTransactionFactory.CreateTransaction(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoNetWithDistributedTransactionFactory.cs:line 18
+   at NHibernate.AdoNet.ConnectionManager.get_Transaction() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 334
+   at NHibernate.Impl.SessionImpl.BeginTransaction(IsolationLevel isolationLevel) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1451
+   at Orchard.Data.SessionLocator.RequireNew(IsolationLevel level) in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 73
+   at Orchard.Data.SessionLocator.RequireNew() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 51
+   at Orchard.Tasks.BackgroundService.Sweep() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Tasks\BackgroundService.cs:line 29
+ClientConnectionId:adf393ff-ca0e-44b1-85e2-1cef53ca30f6
+2014-09-22 09:25:32,255 [28] Orchard.Tasks.BackgroundService - (null) - Error while processing background task
+ (null)
+System.Data.SqlClient.SqlException (0x80131904): Cannot open server 'so7t76764j' requested by the login. Client with IP address '50.197.76.1' is not allowed to access the server.  To enable access, use the Windows Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+Login failed for user 'db_user'.
+This session has been assigned a tracing ID of 'ff38b160-a9f2-44f9-a5e5-a7fb6abcb441'.  Provide this tracing ID to customer support when you need assistance.
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__7() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__6() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.Open(RetryPolicy retryPolicy) in :line 0
+   at NHibernate.SqlAzure.ReliableSqlDbConnection.Open() in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableSqlDbConnection.cs:line 91
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.SqlAzure.ReliableAdoTransaction..ctor(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoTransaction.cs:line 20
+   at NHibernate.SqlAzure.ReliableAdoNetWithDistributedTransactionFactory.CreateTransaction(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoNetWithDistributedTransactionFactory.cs:line 18
+   at NHibernate.AdoNet.ConnectionManager.get_Transaction() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 334
+   at NHibernate.Impl.SessionImpl.BeginTransaction(IsolationLevel isolationLevel) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1451
+   at Orchard.Data.SessionLocator.RequireNew(IsolationLevel level) in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 73
+   at Orchard.Data.SessionLocator.RequireNew() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 51
+   at Orchard.Tasks.BackgroundService.Sweep() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Tasks\BackgroundService.cs:line 29
+ClientConnectionId:516f9dea-2e20-48b5-b97a-0c3786949d0b
+2014-09-22 09:25:32,265 [28] Orchard.Tasks.BackgroundService - (null) - Error while processing background task
+ (null)
+System.Data.SqlClient.SqlException (0x80131904): Cannot open server 'so7t76764j' requested by the login. Client with IP address '50.197.76.1' is not allowed to access the server.  To enable access, use the Windows Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+Login failed for user 'db_user'.
+This session has been assigned a tracing ID of 'ff38b160-a9f2-44f9-a5e5-a7fb6abcb441'.  Provide this tracing ID to customer support when you need assistance.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__7() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__6() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.Open(RetryPolicy retryPolicy) in :line 0
+   at NHibernate.SqlAzure.ReliableSqlDbConnection.Open() in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableSqlDbConnection.cs:line 91
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.SqlAzure.ReliableAdoTransaction..ctor(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoTransaction.cs:line 20
+   at NHibernate.SqlAzure.ReliableAdoNetWithDistributedTransactionFactory.CreateTransaction(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoNetWithDistributedTransactionFactory.cs:line 18
+   at NHibernate.AdoNet.ConnectionManager.get_Transaction() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 334
+   at NHibernate.Impl.SessionImpl.BeginTransaction(IsolationLevel isolationLevel) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1451
+   at Orchard.Data.SessionLocator.RequireNew(IsolationLevel level) in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 73
+   at Orchard.Data.SessionLocator.RequireNew() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 51
+   at Orchard.Tasks.BackgroundService.Sweep() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Tasks\BackgroundService.cs:line 29
+ClientConnectionId:516f9dea-2e20-48b5-b97a-0c3786949d0b
+2014-09-22 09:26:16,896 [25] Orchard.Tasks.BackgroundService - (null) - Error while processing background task
+ (null)
+System.Data.SqlClient.SqlException (0x80131904): Cannot open server 'so7t76764j' requested by the login. Client with IP address '50.197.76.1' is not allowed to access the server.  To enable access, use the Windows Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+Login failed for user 'db_user'.
+This session has been assigned a tracing ID of '40f923d7-d766-47d4-80b4-521bc9ea9cf8'.  Provide this tracing ID to customer support when you need assistance.
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__7() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__6() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.Open(RetryPolicy retryPolicy) in :line 0
+   at NHibernate.SqlAzure.ReliableSqlDbConnection.Open() in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableSqlDbConnection.cs:line 91
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.SqlAzure.ReliableAdoTransaction..ctor(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoTransaction.cs:line 20
+   at NHibernate.SqlAzure.ReliableAdoNetWithDistributedTransactionFactory.CreateTransaction(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoNetWithDistributedTransactionFactory.cs:line 18
+   at NHibernate.AdoNet.ConnectionManager.get_Transaction() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 334
+   at NHibernate.Impl.SessionImpl.BeginTransaction(IsolationLevel isolationLevel) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1451
+   at Orchard.Data.SessionLocator.RequireNew(IsolationLevel level) in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 73
+   at Orchard.Data.SessionLocator.RequireNew() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 51
+   at Orchard.Tasks.BackgroundService.Sweep() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Tasks\BackgroundService.cs:line 29
+ClientConnectionId:2b4c055d-c0d2-4c48-b4cb-a6a93c9e9936
+2014-09-22 09:26:17,063 [25] Orchard.Tasks.BackgroundService - (null) - Error while processing background task
+ (null)
+System.Data.SqlClient.SqlException (0x80131904): Cannot open server 'so7t76764j' requested by the login. Client with IP address '50.197.76.1' is not allowed to access the server.  To enable access, use the Windows Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+Login failed for user 'db_user'.
+This session has been assigned a tracing ID of 'ac1880d8-2259-460e-b254-c89a961738b6'.  Provide this tracing ID to customer support when you need assistance.
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__7() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__6() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.Open(RetryPolicy retryPolicy) in :line 0
+   at NHibernate.SqlAzure.ReliableSqlDbConnection.Open() in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableSqlDbConnection.cs:line 91
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.SqlAzure.ReliableAdoTransaction..ctor(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoTransaction.cs:line 20
+   at NHibernate.SqlAzure.ReliableAdoNetWithDistributedTransactionFactory.CreateTransaction(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoNetWithDistributedTransactionFactory.cs:line 18
+   at NHibernate.AdoNet.ConnectionManager.get_Transaction() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 334
+   at NHibernate.Impl.SessionImpl.BeginTransaction(IsolationLevel isolationLevel) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1451
+   at Orchard.Data.SessionLocator.RequireNew(IsolationLevel level) in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 73
+   at Orchard.Data.SessionLocator.RequireNew() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 51
+   at Orchard.Tasks.BackgroundService.Sweep() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Tasks\BackgroundService.cs:line 29
+ClientConnectionId:8c6a460c-187c-46f7-8d33-a960b099df9c
+2014-09-22 09:26:17,069 [25] Orchard.Tasks.BackgroundService - (null) - Error while processing background task
+ (null)
+System.Data.SqlClient.SqlException (0x80131904): Cannot open server 'so7t76764j' requested by the login. Client with IP address '50.197.76.1' is not allowed to access the server.  To enable access, use the Windows Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+Login failed for user 'db_user'.
+This session has been assigned a tracing ID of 'ac1880d8-2259-460e-b254-c89a961738b6'.  Provide this tracing ID to customer support when you need assistance.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__7() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__6() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.Open(RetryPolicy retryPolicy) in :line 0
+   at NHibernate.SqlAzure.ReliableSqlDbConnection.Open() in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableSqlDbConnection.cs:line 91
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.SqlAzure.ReliableAdoTransaction..ctor(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoTransaction.cs:line 20
+   at NHibernate.SqlAzure.ReliableAdoNetWithDistributedTransactionFactory.CreateTransaction(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoNetWithDistributedTransactionFactory.cs:line 18
+   at NHibernate.AdoNet.ConnectionManager.get_Transaction() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 334
+   at NHibernate.Impl.SessionImpl.BeginTransaction(IsolationLevel isolationLevel) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1451
+   at Orchard.Data.SessionLocator.RequireNew(IsolationLevel level) in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 73
+   at Orchard.Data.SessionLocator.RequireNew() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 51
+   at Orchard.Tasks.BackgroundService.Sweep() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Tasks\BackgroundService.cs:line 29
+ClientConnectionId:8c6a460c-187c-46f7-8d33-a960b099df9c
+2014-09-22 09:27:17,018 [23] Orchard.Tasks.BackgroundService - (null) - Error while processing background task
+ (null)
+System.Data.SqlClient.SqlException (0x80131904): Cannot open server 'so7t76764j' requested by the login. Client with IP address '50.197.76.1' is not allowed to access the server.  To enable access, use the Windows Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+Login failed for user 'db_user'.
+This session has been assigned a tracing ID of '611671a7-3052-43e6-98d7-3b55fa4360df'.  Provide this tracing ID to customer support when you need assistance.
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__7() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__6() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.Open(RetryPolicy retryPolicy) in :line 0
+   at NHibernate.SqlAzure.ReliableSqlDbConnection.Open() in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableSqlDbConnection.cs:line 91
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.SqlAzure.ReliableAdoTransaction..ctor(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoTransaction.cs:line 20
+   at NHibernate.SqlAzure.ReliableAdoNetWithDistributedTransactionFactory.CreateTransaction(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoNetWithDistributedTransactionFactory.cs:line 18
+   at NHibernate.AdoNet.ConnectionManager.get_Transaction() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 334
+   at NHibernate.Impl.SessionImpl.BeginTransaction(IsolationLevel isolationLevel) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1451
+   at Orchard.Data.SessionLocator.RequireNew(IsolationLevel level) in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 73
+   at Orchard.Data.SessionLocator.RequireNew() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 51
+   at Orchard.Tasks.BackgroundService.Sweep() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Tasks\BackgroundService.cs:line 29
+ClientConnectionId:57044028-e0fe-4b05-a95e-5d6a25e51d72
+2014-09-22 09:27:17,328 [23] Orchard.Tasks.BackgroundService - (null) - Error while processing background task
+ (null)
+System.Data.SqlClient.SqlException (0x80131904): Cannot open server 'so7t76764j' requested by the login. Client with IP address '50.197.76.1' is not allowed to access the server.  To enable access, use the Windows Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+Login failed for user 'db_user'.
+This session has been assigned a tracing ID of '9424afd6-021f-4b62-85d9-7496a88d6053'.  Provide this tracing ID to customer support when you need assistance.
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__7() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__6() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.Open(RetryPolicy retryPolicy) in :line 0
+   at NHibernate.SqlAzure.ReliableSqlDbConnection.Open() in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableSqlDbConnection.cs:line 91
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.SqlAzure.ReliableAdoTransaction..ctor(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoTransaction.cs:line 20
+   at NHibernate.SqlAzure.ReliableAdoNetWithDistributedTransactionFactory.CreateTransaction(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoNetWithDistributedTransactionFactory.cs:line 18
+   at NHibernate.AdoNet.ConnectionManager.get_Transaction() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 334
+   at NHibernate.Impl.SessionImpl.BeginTransaction(IsolationLevel isolationLevel) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1451
+   at Orchard.Data.SessionLocator.RequireNew(IsolationLevel level) in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 73
+   at Orchard.Data.SessionLocator.RequireNew() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\SessionLocator.cs:line 51
+   at Orchard.Tasks.BackgroundService.Sweep() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Tasks\BackgroundService.cs:line 29
+ClientConnectionId:d05a176f-aa37-44d9-802b-37787b58e92e
+2014-09-22 09:27:17,334 [23] Orchard.Tasks.BackgroundService - (null) - Error while processing background task
+ (null)
+System.Data.SqlClient.SqlException (0x80131904): Cannot open server 'so7t76764j' requested by the login. Client with IP address '50.197.76.1' is not allowed to access the server.  To enable access, use the Windows Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+Login failed for user 'db_user'.
+This session has been assigned a tracing ID of '9424afd6-021f-4b62-85d9-7496a88d6053'.  Provide this tracing ID to customer support when you need assistance.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__7() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<Open>b__6() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.Open(RetryPolicy retryPolicy) in :line 0
+   at NHibernate.SqlAzure.ReliableSqlDbConnection.Open() in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableSqlDbConnection.cs:line 91
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.SqlAzure.ReliableAdoTransaction..ctor(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoTransaction.cs:line 20
+   at NHibernate.SqlAzure.ReliableAdoNetWithDistributedTransactionFactory.CreateTransaction(ISessionImplementor session) in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableAdoNetWithDistributedTransactionFactory.cs:line 18
+   at NHibernate.AdoNet.ConnectionManager.get_Transaction() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 334
+   at NHibernate.Impl.SessionImpl.BeginTransaction(IsolationLevel 

@@ -1,0 +1,48 @@
+.portfolio-filter {
+  padding: 25px 15px;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+.portfolio-item {
+  overflow: hidden;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  border-radius: 3px;
+}
+.portfolio-item .portfolio-thumb {
+  position: relative;
+  overflow: hidden;
+}
+.portfolio-item .portfolio-thumb img {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.portfolio-item .portfolio-details {
+  text-align: center;
+  padding: 20px;
+  border-top: 0;
+  overflow: hidden;
+}
+.portfolio-item .portfolio-details h5 {
+  margin-top: 0;
+  position: relative;
+}
+.portfolio-item .portfolio-details p {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+.isotope {
+  -webkit-transition-property: height, width;
+  -moz-transition-property: height, width;
+  -ms-transition-property: height, width;
+  -o-transition-property: height, width;
+  transition-property: height, width;
+}
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -ms-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+}

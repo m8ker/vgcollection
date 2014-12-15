@@ -1,0 +1,91 @@
+2014-09-21 23:53:06,138 [17] NHibernate.AdoNet.AbstractBatcher - (null) - Could not execute query: select scheduledt0_.Id as Id839_, scheduledt0_.TaskType as TaskType839_, scheduledt0_.ScheduledUtc as Schedule3_839_, scheduledt0_.ContentItemVersionRecord_id as ContentI4_839_ from Scheduling_ScheduledTaskRecord scheduledt0_ where scheduledt0_.ScheduledUtc<=@p0
+ (null)
+System.Data.SqlClient.SqlException (0x80131904): Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<>c__DisplayClassc`1.<ExecuteCommand>b__a() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<>c__DisplayClassc`1.<ExecuteCommand>b__9() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.ExecuteCommand[T](IDbCommand command, RetryPolicy retryPolicy, CommandBehavior behavior) in :line 0
+   at NHibernate.SqlAzure.ReliableSqlCommand.ExecuteReader() in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableSqlCommand.cs:line 85
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 223
+ClientConnectionId:4420e852-95ef-424a-9fa9-4bed8ed7b21f
+2014-09-21 23:53:06,175 [17] NHibernate.Util.ADOExceptionReporter - (null) - Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ (null)
+2014-09-21 23:53:06,175 [17] NHibernate.Util.ADOExceptionReporter - (null) - The wait operation timed out
+ (null)
+2014-09-21 23:53:06,180 [17] NHibernate.Util.ADOExceptionReporter - (null) - Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ (null)
+2014-09-21 23:53:06,180 [17] NHibernate.Util.ADOExceptionReporter - (null) - The wait operation timed out
+ (null)
+2014-09-21 23:53:06,180 [17] NHibernate.Util.ADOExceptionReporter - (null) - Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ (null)
+2014-09-21 23:53:06,180 [17] NHibernate.Util.ADOExceptionReporter - (null) - The wait operation timed out
+ (null)
+2014-09-21 23:53:06,182 [17] Orchard.Tasks.BackgroundService - (null) - Error while processing background task
+ (null)
+NHibernate.Exceptions.GenericADOException: could not execute query
+[ select scheduledt0_.Id as Id839_, scheduledt0_.TaskType as TaskType839_, scheduledt0_.ScheduledUtc as Schedule3_839_, scheduledt0_.ContentItemVersionRecord_id as ContentI4_839_ from Scheduling_ScheduledTaskRecord scheduledt0_ where scheduledt0_.ScheduledUtc<=@p0 ]
+  Name:p1 - Value:9/22/2014 6:52:36 AM
+[SQL: select scheduledt0_.Id as Id839_, scheduledt0_.TaskType as TaskType839_, scheduledt0_.ScheduledUtc as Schedule3_839_, scheduledt0_.ContentItemVersionRecord_id as ContentI4_839_ from Scheduling_ScheduledTaskRecord scheduledt0_ where scheduledt0_.ScheduledUtc<=@p0] ---> System.Data.SqlClient.SqlException: Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception: The wait operation timed out
+   --- End of inner exception stack trace ---
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<>c__DisplayClassc`1.<ExecuteCommand>b__a() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.<>c__DisplayClassc`1.<ExecuteCommand>b__9() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0() in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func) in :line 0
+   at Microsoft.Practices.TransientFaultHandling.RetryPolicy.ExecuteAction(Action action) in :line 0
+   at Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection.ExecuteCommand[T](IDbCommand command, RetryPolicy retryPolicy, CommandBehavior behavior) in :line 0
+   at NHibernate.SqlAzure.ReliableSqlCommand.ExecuteReader() in c:\TeamCity\buildAgent\work\99f31db0d548c7b7\NHibernate.SqlAzure\ReliableSqlCommand.cs:line 85
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 229
+   at NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Loader\Loader.cs:line 1224
+   at NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Loader\Loader.cs:line 419
+   at NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Loader\Loader.cs:line 251
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Loader\Loader.cs:line 1564
+   --- End of inner exception stack trace ---
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Loader\Loader.cs:line 1571
+   at NHibernate.Loader.Loader.ListIgnoreQueryCache(ISessionImplementor session, QueryParameters queryParameters) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Loader\Loader.cs:line 1472
+   at NHibernate.Loader.Loader.List(ISessionImplementor session, QueryParameters queryParameters, ISet`1 querySpaces, IType[] resultTypes) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Loader\Loader.cs:line 1465
+   at NHibernate.Hql.Ast.ANTLR.Loader.QueryLoader.List(ISessionImplementor session, QueryParameters queryParameters) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Hql\Ast\ANTLR\Loader\QueryLoader.cs:line 288
+   at NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl.List(ISessionImplementor session, QueryParameters queryParameters) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Hql\Ast\ANTLR\QueryTranslatorImpl.cs:line 109
+   at NHibernate.Engine.Query.HQLQueryPlan.PerformList(QueryParameters queryParameters, ISessionImplementor session, IList results) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Engine\Query\HQLQueryPlan.cs:line 89
+   at NHibernate.Impl.SessionImpl.List(IQueryExpression queryExpression, QueryParameters queryParameters, IList results) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 659
+   at NHibernate.Impl.AbstractSessionImpl.List(IQueryExpression queryExpression, QueryParameters parameters) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\AbstractSessionImpl.cs:line 92
+   at NHibernate.Impl.ExpressionQueryImpl.List() in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Impl\ExpressionQueryImpl.cs:line 58
+   at NHibernate.Linq.DefaultQueryProvider.ExecuteQuery(NhLinqExpression nhLinqExpression, IQuery query, NhLinqExpression nhQuery) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Linq\DefaultQueryProvider.cs:line 103
+   at NHibernate.Linq.DefaultQueryProvider.Execute(Expression expression) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Linq\DefaultQueryProvider.cs:line 35
+   at NHibernate.Linq.DefaultQueryProvider.Execute[TResult](Expression expression) in c:\Users\sebros\Documents\My Projects\nhibernate-core\src\NHibernate\Linq\DefaultQueryProvider.cs:line 40
+   at Remotion.Linq.QueryableBase`1.GetEnumerator() in :line 0
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Orchard.Utility.Extensions.ReadOnlyCollectionExtensions.ToReadOnlyCollection[T](IEnumerable`1 enumerable) in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Utility\Extensions\ReadOnlyCollectionExtensions.cs:line 8
+   at Orchard.Data.Repository`1.Orchard.Data.IRepository<T>.Fetch(Expression`1 predicate) in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Data\Repository.cs:line 72
+   at Orchard.Core.Scheduling.Services.ScheduledTaskExecutor.Sweep() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard.Web\Core\Scheduling\Services\ScheduledTaskExecutor.cs:line 39
+   at Orchard.Tasks.BackgroundService.Sweep() in z:\Builds\work\d1eb156ccc3cb14\src\Orchard\Tasks\BackgroundService.cs:line 30

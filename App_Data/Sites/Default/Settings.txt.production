@@ -1,0 +1,13 @@
+State: Running
+Themes: 
+Modules: 
+Name: Default
+DataProvider: SqlServer
+DataConnectionString: Data Source=so7t76764j.database.windows.net,1433;Initial Catalog=vg-collection;Persist Security Info=True;User ID=db_user;Password=tHd21K7L9t62Q0g
+DataTablePrefix: null
+RequestUrlHost: null
+RequestUrlPrefix: null
+EncryptionAlgorithm: AES
+EncryptionKey: 1943598ACD926DE92B9C7143578488E10F45DCC59C7170AC0FD82C584F4DC8D3
+HashAlgorithm: HMACSHA256
+HashKey: DF6363E0E26A00222329717735A2D087132421002BCB6D369EC2CC1BA6BC881B8DFE04C49BB20F98BB8C3377CA8258F8D35E631721A98FF4F6DF8180C214F5D6
